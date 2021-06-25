@@ -22,15 +22,17 @@ func main() {
 	// la vraie valeur
 	fmt.Println(meilleurButeur["Lukaku"], meilleurButeur["Messi"])
 	fmt.Println(tabPeriodique["Li"])
+	fmt.Println(contient("Slo", meilleurButeur))
+	fmt.Println(contient("Lukaku", meilleurButeur))
 
 }
 
-func contient(nom string, dico *map[string]int) bool {
-	valeur, ok := *dico[nom]
+func contient(nom string, dico map[string]int) bool {
+	valeur, ok := dico[nom]
 	if !ok {
-		fmt.Println("il n'y a pas de", valeur)
+		fmt.Print("il n'y a pas de ", valeur)
 	} else {
-		fmt.Println()
+		fmt.Println(valeur)
 	}
 	return ok
 }
