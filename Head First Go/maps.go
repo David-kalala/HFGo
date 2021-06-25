@@ -24,3 +24,13 @@ func main() {
 	fmt.Println(tabPeriodique["Li"])
 
 }
+
+func contient(nom string, dico *map[string]int) bool {
+	valeur, ok := *dico[nom]
+	if !ok {
+		fmt.Println("il n'y a pas de", valeur)
+	} else {
+		fmt.Println()
+	}
+	return ok
+}
