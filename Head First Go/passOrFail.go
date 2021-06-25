@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"greeting"
 	"log"
 	"os"
 	"strconv"
@@ -17,7 +16,6 @@ func main() {
 	}
 	passOrFail(&number)
 	//appel de la procedure Hello du package greeting
-	greeting.Hello()
 
 }
 
@@ -50,5 +48,4 @@ func passOrFail(rep *float64) {
 		status = "you failed"
 	}
 	fmt.Println("A grade of", *rep, "means", status)
-	greeting.Bonjour()
 }
