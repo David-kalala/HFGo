@@ -1,0 +1,2 @@
+# HFGo
+Learning golang
