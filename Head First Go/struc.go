@@ -3,6 +3,7 @@ package main
 type joueur struct {
 	nom  string
 	mage float64
+	hp   float64
 }
 
 func main() {
