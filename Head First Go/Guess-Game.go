@@ -1,5 +1,4 @@
-// J'AI FAIS UN PETIT JEU DE DEVINETTE, JE VAIS ESSAYER DE T'EXPLIQUER CE QUE CHAQUE LIGNE FAIT
-// FAUT QU'ON SE FAMILIARISE AVEC LE LANGAGE
+// J'AI FAIS UN PETIT JEU DE DEVINETTE
 
 // Il  y a toujours un package main, ca veut dire que tout le reste du code appartiendra au package main
 package main
@@ -57,7 +56,7 @@ func main() {
 		}
 		//On cree un boolean
 		isNegative := false
-		//On cree une boucle quest vrai tant que le nombre est <0 et >100
+		//On cree une boucle qui est vrai tant que le nombre est <0 et >100
 		// isNegative est vrai dans la boucle
 		for i := 0; !(isNegative); i++ {
 			if nombre < 0 || nombre > 100 {

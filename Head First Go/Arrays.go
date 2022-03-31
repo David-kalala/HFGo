@@ -24,7 +24,7 @@ func main() {
 	//ici je declare un tableau de 2 case de type pointeur de string
 	// ce tableau contient a l'indice l'adress de 4eme case du tableau nombres
 	voyons := [2]*string{&nombres[4]}
-	// j'afiche le contenu de l'adresse et l'adresse de la premiere case du tableau de pointeur de string
+	// j'affiche le contenu de l'adresse et l'adresse de la premiere case du tableau de pointeur de string
 	fmt.Println(*voyons[0], voyons[0])
 	fmt.Println(&nombres[4])
 	//Je declare un slice de type string
