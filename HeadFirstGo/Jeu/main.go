@@ -6,21 +6,25 @@ package main
 import (
 	// ici on importe des package qu'on va utiliser
 
+	"fmt"
 	"html/template"
 	"math/rand"
 	"net/http"
+	"os"
 	"time"
 )
 
-type theGame struct {
-	Answer   int
-	Attempts int
-	Random   int
-}
-
 func main() {
 
-	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
+	p, _ := template.ParseGlob("*.html")
+
+	type theGame struct {
+		Answer   int
+		Attempts int
+		Random   int
+	}
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		var nombre int
 		var essaie = 10
 
@@ -28,13 +32,14 @@ func main() {
 		rand.Seed(x)
 		nbAleatoire := rand.Intn(101) + 1
 
-		data := theGame{Answer: nombre, Attempts: essaie, Random: nbAleatoire}
-		p, _ := template.ParseGlob("*t.html")
+		data := theGame{nombre, essaie, nbAleatoire}
+
 		p.ExecuteTemplate(w, "game", data)
 
 	})
-
-	fileServer := http.FileServer(http.Dir("/game-test.html"))
-	http.Handle("/guess", http.StripPrefix("/guess", fileServer))
+	Doscour, _ := os.Getwd()
+	fileServer := http.FileServer(http.Dir(Doscour + "/Jeu"))
+	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
+	fmt.Print(Doscour)
 	http.ListenAndServe(":8000", nil)
 }

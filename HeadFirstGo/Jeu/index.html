@@ -6,13 +6,14 @@
     <title>
         GuessMe
     </title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
     <h1 style="color: blueviolet; margin-left:40%;">GuessMe</h1>
     <h2 style="color: black;">I've chosen a random number between 1 and 100. Can you guess it ?</h3>
         <h3 style="color: red;"> You have {{.Attempts}} Attempts</h3>
-        <form action="/guess" method="POST" id="myForm">
+        <form action="/" method="POST" id="myForm">
 
             {{ if not .Answer}}
             <label for="answer">Make a guess :</label>
