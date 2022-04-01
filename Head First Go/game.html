@@ -1,45 +1,29 @@
+{{define "game"}}
 <!DOCTYPE html>
 <html>
 <head>
     <title>
         GuessMe
     </title>
-    <script>
-        
-        switch (document.getElementById("myForm").value) {
-            case "":
-                alert("Enter a number")
-                break
-            case (document.myForm.answer.value < 0):
-                alert("Your number is too low")
-                break
-            case (document.myForm.answer.value > 100) : 
-                alert("Your number is to high")
-                break
-            default: 
-
-
-        }
-    </script>
 </head>
 <body>
 <h1 style="color: blueviolet; margin-left:40%;">GuessMe</h1>
 <h2 style="color: black;">I've chosen a random number between 1 and 100. Can you guess it ?</h3>
 <h3 style="color: red;"> You have {{.Attempts}} Attempts</h3>
-<form action="/guess" method="POST" id="myForm">
-    <label for="answer">Make a guess :</label>
-    <input type="text" name="answer" placeholder="write a number here">
-    <input type="submit" value="guess">
-    <script>
+<form action="" method="POST" id="myForm">
     
+    {{ if not .Answer}}
+    <label for="answer">Make a guess :</label>
+    <input type="submit" value="guess">
+    <input type="text" name="answer" placeholder="write a number here">
+    {{if lt .Answer 0 }}
+    <label for="answer">I didn't pick a number below 0. Try again !</label>
+    {{if gt .Answer 100 }}
+    <label for="answer">I didn't pick a number above 100. Try again !</label>
+    {{end}}
 
-
-    </script>
 
 </form>
-
-
-
-
 </body>
 </html>
+{{ end }}

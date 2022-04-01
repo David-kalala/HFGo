@@ -21,9 +21,9 @@ func acceuil(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(x)
 	nbAleatoire := rand.Intn(101) + 1
 
-	g := theGame{Answer: nombre, Attempts: essaie, Random: nbAleatoire}
+	data := theGame{Answer: nombre, Attempts: essaie, Random: nbAleatoire}
 	p, _ := template.ParseFiles("game.html")
-	p.Execute(w, g)
+	p.ExecuteTemplate(w, "game", data)
 
 }
 
