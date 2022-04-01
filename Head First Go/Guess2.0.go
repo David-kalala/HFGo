@@ -34,6 +34,7 @@ type theGame struct {
 }
 
 func main() {
-	http.HandleFunc("/", acceuil)
+
+	http.HandleFunc("/game", acceuil)
 	http.ListenAndServe(":8000", nil)
 }

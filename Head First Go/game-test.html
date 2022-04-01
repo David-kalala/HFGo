@@ -1,22 +1,30 @@
+{{define "game"}}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>
         GuessMe
     </title>
 </head>
+
 <body>
-<h1 style="color: blueviolet; margin-left:40%;">GuessMe</h1>
-<h2 style="color: black;">You'll have {{.Attempts}}</h2>
-<h3 style="color: red;">{{.Random}}</h3>
-<form action="">
-    <label for="answer">Make a guess :</label>
-    <input type="text" id="answer" placeholder={{.Answer}}>
+    <h1 style="color: blueviolet; margin-left:40%;">GuessMe</h1>
+    <h2 style="color: black;">I've chosen a random number between 1 and 100. Can you guess it ?</h3>
+        <h3 style="color: red;"> You have {{.Attempts}} Attempts</h3>
+        <form action="/guess" method="POST" id="myForm">
 
-</form>
-
-
-
-
+            {{ if not .Answer}}
+            <label for="answer">Make a guess :</label>
+            <input type="submit" value="guess">
+            <input type="text" name="answer" placeholder="write a number here">
+            {{if lt .Answer 0 }}
+            <label for="answer">I didn't pick a number below 0. Try again !</label>
+            {{if gt .Answer 100 }}
+            <label for="answer">I didn't pick a number above 100. Try again !</label>
+            {{end}}
+        </form>
 </body>
+
 </html>
+{{ end }}
