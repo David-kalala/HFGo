@@ -23,7 +23,7 @@ func acceuil(w http.ResponseWriter, r *http.Request) {
 
 	data := theGame{Answer: nombre, Attempts: essaie, Random: nbAleatoire}
 	p, _ := template.ParseFiles("game.html")
-	p.ExecuteTemplate(w, "game", data)
+	p.Execute(w, data)
 
 }
 
@@ -34,6 +34,6 @@ type theGame struct {
 }
 
 func main() {
-	http.HandleFunc("/guess", acceuil)
+	http.HandleFunc("/", acceuil)
 	http.ListenAndServe(":8000", nil)
 }
