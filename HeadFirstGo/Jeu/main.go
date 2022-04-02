@@ -7,10 +7,10 @@ import (
 	// ici on importe des package qu'on va utiliser
 
 	"fmt"
-	"html/template"
 	"math/rand"
 	"net/http"
 	"os"
+	"text/template"
 	"time"
 )
 
@@ -37,9 +37,9 @@ func main() {
 		p.ExecuteTemplate(w, "game", data)
 
 	})
-	Doscour, _ := os.Getwd()
-	fileServer := http.FileServer(http.Dir(Doscour + "/Jeu"))
-	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
-	fmt.Print(Doscour)
-	http.ListenAndServe(":8000", nil)
+	folder, _ := os.Getwd()
+	fileServer := http.FileServer(http.Dir(folder + "/Jeu"))
+	http.Handle("/static/", fileServer)
+	fmt.Print(folder)
+	http.ListenAndServe(":555", nil)
 }
